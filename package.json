@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-notes-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "validator": "^13.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anuragpatle/nodejs-notes-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anuragpatle/nodejs-notes-app/issues"
+  },
+  "homepage": "https://github.com/anuragpatle/nodejs-notes-app#readme"
+}

@@ -10,4 +10,3 @@ console.log(
 
 console.log(chalk.green.bold.bgWhite("Success"));
 
-chalk.

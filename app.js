@@ -1,12 +1,20 @@
 var chalk = require("chalk");
+const getMessage = require('./notes')
 
-console.log(
-  chalk.green(
-    "I am a green line " +
-      chalk.blue.underline.bold("with a blue substring") +
-      " that becomes green again!"
-  )
-);
+printWithWhiteBg = function (str) {
+  const greenMsg = chalk.white.inverse.bold(str)
+  console.log(greenMsg)
+}
 
-console.log(chalk.green.bold.bgWhite("Success"));
+const command = process.argv[2]
+
+if (command === 'add') {
+  
+  printWithWhiteBg('Adding Note!')
+
+} else if (command === 'remove') {
+  
+  printWithWhiteBg('Remove Note!')
+
+} 
 

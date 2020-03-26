@@ -10,11 +10,27 @@ yargs.version('1.1.0')
 //console.log(yargs.argv)
 
 // Create add command
+// builder: is for providing options to the command.
+// demandOption: to make a particular command option compulsory.
+// type: to make a particular command option not accept input other than the defined type (in our case string).
 yargs.command({
   command: 'add',
   describe: 'Add a new note',
-  handler: function () {
-      console.log('Adding a new note!')
+  builder: {
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string'
+    },
+    body: {
+      describe: 'Note Body',
+      demandOption: 'true',
+      type: 'string'
+    }
+  },
+  handler: function (argv) {
+      console.log('Title: ', argv.title)
+      console.log('Body: ', argv.body)
   }
 })
 
@@ -27,12 +43,17 @@ yargs.command({
   }
 })
 
-// Create list command
+// Create list command.
 yargs.command({
   command: 'list',
   describe: 'List your notes',
-  handler: function () {
-      console.log('Listing out all notes')
+  builder: {
+    title: {
+      describe: 'Note title'
+    }
+  },
+  handler: function (argv) {
+      console.log('Listing out all notes', argv)
   }
 })
 
@@ -45,4 +66,8 @@ yargs.command({
   }
 })
 
-const args = yargs.argv
+// Without this line, our yargs.command(..) won't get initialized. 
+// Way arround to initialize yargs.command(..) is to call yargs.argv. E.g. console.log(yargs.argv)
+yargs.parse()
+
+

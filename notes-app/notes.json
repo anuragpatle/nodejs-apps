@@ -1,14 +1,1 @@
-[
-    {
-        "title": "shopping_list2",
-        "body": "some body2"
-    },
-    {
-        "title": "shopping_list3",
-        "body": "some body3"
-    },
-    {
-        "title": "shopping_list4",
-        "body": "some body4"
-    }
-]
+[{"title":"shopping_list2","body":"some body2"},{"title":"shopping_list3","body":"some body3"},{"title":"shopping_list4","body":"some body4"},{"title":"shopping_list7","body":"some body7"}]

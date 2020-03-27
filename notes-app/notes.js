@@ -1,11 +1,11 @@
 var chalk = require("chalk");
 const fs = require('fs')
 
-const getNotes = function () {
+const getNotes = () => {
     return 'Your notes'
 }
 
-const addNote = function (title, body) {
+const addNote = (title, body) => {
     const notes = loadNotes()
 
 
@@ -28,13 +28,13 @@ const addNote = function (title, body) {
 
 }
 
-const saveNotes = function (notes) {
+const saveNotes = (notes) => {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
     printWithGreenBg('Note has been saved!')
 }
 
-const removeNote = function (title) {
+const removeNote = (title) => {
     const notes = loadNotes()
 
     const notesToKeep = notes.filter(note => note.title !== title)
@@ -48,7 +48,16 @@ const removeNote = function (title) {
 
 }
 
-const loadNotes = function () {
+const listNotes = () => {
+    const notes = loadNotes()
+
+    notes.forEach(note => {
+        printWithWhiteBg(note.title)
+    });
+
+}
+
+const loadNotes = () => {
     try {
         const dataBuffer = fs.readFileSync('notes.json')
         const dataJSON = dataBuffer.toString()
@@ -58,17 +67,17 @@ const loadNotes = function () {
     }
 }
 
-const printWithWhiteBg = function (str) {
+const printWithWhiteBg = (str) => {
     const whiteMsg = chalk.white.inverse.bold(str)
     console.log(whiteMsg)
 }
 
-const printWithGreenBg = function (str) {
+const printWithGreenBg = (str) => {
     const greenMsg = chalk.green.inverse.bold(str)
     console.log(greenMsg)
 }
 
-const printWithRedBg = function (str) {
+const printWithRedBg = (str) => {
     const redMsg = chalk.red.inverse.bold(str)
     console.log(redMsg)
 }
@@ -76,5 +85,6 @@ const printWithRedBg = function (str) {
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }

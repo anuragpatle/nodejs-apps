@@ -1,20 +1,26 @@
 const { geoCode, forecast } = require('./utils/geocode')
 
-geoCode('Pune', (error, data) => {
+const location = process.argv[2]
 
-    if (error) {
-        return console.log('Error', error)
-    }
+if (location === undefined) {
 
-    forecast(data.latitude, data.longitude, (error, forecastData) => {
+    console.log('Please put location name as 3rd commnd line argument.')
+
+} else {
+    geoCode(location, (error, data) => {
+
         if (error) {
             return console.log('Error', error)
         }
 
-        console.log('Location: ' + data.placeName)
-        console.log('Data', forecastData)
+        forecast(data.latitude, data.longitude, (error, forecastData) => {
+            if (error) {
+                return console.log('Error', error)
+            }
+
+            console.log('Location: ' + data.placeName)
+            console.log('Data', forecastData)
+        })
+
     })
-
-})
-
-
+}

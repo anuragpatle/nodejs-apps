@@ -3,10 +3,12 @@ const express = require('express')
 
 const app = express()
 const publicDirectoryPath = path.join(__dirname, '../public')
+const viewPath = path.join(__dirname, '../templates')
 
 app.use(express.static(publicDirectoryPath))
 
 app.set('view engine', 'hbs')
+app.set('views', viewPath)
 
 // internally index will get mapped to:  ../views/index.hbs
 app.get('', (req, res) => {

@@ -2,14 +2,15 @@
   "name": "web-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src\\app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "powershell -ExecutionPolicy Bypass -File C:\\Users\\anura\\AppData\\Roaming\\npm\\nodemon.ps1 src\\app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "hbs": "^4.0.1"
   }
 }

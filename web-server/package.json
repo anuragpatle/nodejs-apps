@@ -4,7 +4,7 @@
   "description": "",
   "main": "src\\app.js",
   "scripts": {
-    "start": "powershell -ExecutionPolicy Bypass -File C:\\Users\\anura\\AppData\\Roaming\\npm\\nodemon.ps1 src\\app.js -e js,hbs"
+    "start": "powershell -ExecutionPolicy Bypass -File C:\\Users\\anura\\AppData\\Roaming\\npm\\nodemon.ps1 src\\app.js -e js,hbs,css"
   },
   "keywords": [],
   "author": "",

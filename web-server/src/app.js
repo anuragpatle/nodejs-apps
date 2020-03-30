@@ -1,6 +1,7 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+const { geoCode, forecast } = require('../../weather-app/utils/geocode')
 
 const app = express()
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -32,10 +33,51 @@ app.get('/about', (req, res) => {
 
 
 app.get('/weather', (req, res) => {
-    res.send({
-        forecast: 'It is snowing',
-        location: 'Philadelphia'
-    })
+
+    const address = req.query.address
+
+    if (address === undefined) {
+        return res.send({
+            error: 'You must provide an address.'
+        })
+    } else {
+
+        geoCode(address, (error, { latitude, longitude, placeName: location }) => {
+
+            if (error) {
+                return res.send({
+                    Error: error,
+                    location: location
+                })
+            }
+
+            forecast({ latitude, longitude }, (error, forecastData) => {
+
+                if (error) {
+                    return res.send({
+                        Error: error,
+                        location: location
+                    })
+                } else {
+                    // console.log('Location: ' + location)
+                    // console.log('Data', forecastData)
+
+                    res.send({
+                        forecast: forecastData,
+                        location: location
+                    })
+                }
+
+
+
+            })
+
+        })
+
+
+    }
+
+
 })
 
 app.get('/help', (req, res) => {

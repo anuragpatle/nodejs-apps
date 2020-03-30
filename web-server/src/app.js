@@ -47,6 +47,27 @@ app.get('/help', (req, res) => {
 })
 
 
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        errorMsg: 'Help content not found!',
+        name: 'Anurag Patle For Error!'
+    })
+
+})
+
+// This request has to come at last after all the request mapping.
+// Reason: is express see for the request in the same order you have placed in file while coding.
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        errorMsg: 'Page not found!',
+        name: 'Anurag Patle!'
+    })
+
+})
+
+
 app.listen(3000, () => {
     console.log('Server is up on port 3000.')
 })
